@@ -178,6 +178,14 @@ ul {
     text-transform: uppercase;
 }
 
+.list-categories__icon {
+    position: absolute;
+    top: 50%;
+    left: 24px;
+    font-size: 26px;
+    transform: translate(-50%, -50%);
+}
+
 .list-categories__item {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     border-left: 3px solid transparent;
@@ -193,10 +201,11 @@ ul {
 }
 
 .list-categories__link {
+    position: relative;
     display: block;
     color: inherit;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 10px 15px 10px 53px;
 
     &:hover {
         background-color: #272733;

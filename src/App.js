@@ -92,7 +92,6 @@ class App extends React.Component {
 					});
 					return;
 				}
-				console.log(response.data);
 				const jokes = [...this.state.jokes, response.data];
 				this.setState({
 					jokes: jokes

@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import { CATEGORIES_ICONS } from '../settings.js';
+
+function getCategoryIcon(catName) {
+	return catName in CATEGORIES_ICONS ? CATEGORIES_ICONS[catName] : "pe-7s-smile";
+}
 
 class ListCategories extends React.Component {
 	static propTypes = {
@@ -42,7 +47,10 @@ class ListCategories extends React.Component {
 		const items = this.props.items.map((item, index) => {
 			return (
 				<li className={classNames("list-categories__item", this.props.activeCategory === item ? "active" : "")} onClick={this.handleItemClick} key={index}>
-					<Link className="list-categories__link" to={'/'}>{item}</Link>
+					<Link className="list-categories__link" to={'/'}>
+						<i className={"list-categories__icon " + getCategoryIcon(item)}></i>
+						{item}
+					</Link>
 				</li>
 			);
 		});
