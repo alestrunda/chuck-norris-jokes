@@ -2,6 +2,7 @@
   "name": "chuck-norris-jokes",
   "version": "0.1.0",
   "repository": "git@github.com:alestrunda/chuck-norris-jokes.git",
+  "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
     "enzyme": "^3.0.0",
