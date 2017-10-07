@@ -30,20 +30,12 @@ class ListJokes extends React.Component {
 	}
 
 	isFavourite(item) {
-		const favouritesLen = this.props.favourites.length;
-		for(let i=0; i<favouritesLen; i++) {
-			if(this.props.favourites[i].id === item.id)
-				return true;
-		}
-		return false;
+		return this.props.favourites.find((el) => el.id === item.id) ? true : false;
 	}
 
 	getRating(item) {
-		const ratingsLen = this.props.ratings.length;
-		for(let i=0; i<ratingsLen; i++) {
-			if(this.props.ratings[i].id === item.id)
-				return this.props.ratings[i].rating;
-		}
+		const itemRating = this.props.ratings.find((el) => el.id === item.id);
+		return itemRating ? itemRating.rating : null;
 	}
 
 	render() {
@@ -52,19 +44,23 @@ class ListJokes extends React.Component {
 		const items = this.props.items.map((item, index) => {
 			return (
 				<li className="list-jokes__item" key={item.id}>
-					<i className="list-jokes__icon fa fa-heart-o" onClick={() => this.handleFavouriteClick(item)}></i>
-					<i className={classNames("list-jokes__icon list-jokes__icon--active fa fa-heart", this.isFavourite(item) ? "active" : "")} onClick={() => this.handleFavouriteClick(item)}></i>
+					<i
+						className="list-jokes__icon fa fa-heart-o"
+						onClick={() => this.handleFavouriteClick(item)}>
+					</i>
+					<i
+						className={classNames("list-jokes__icon list-jokes__icon--active fa fa-heart", this.isFavourite(item) ? "active" : "")}
+						onClick={() => this.handleFavouriteClick(item)}>
+					</i>
 					{item.value}
 					<div className="list-jokes__select-wrapper">
 						<Select
 							className="list-jokes__select"
 							placeholder="Select rating"
-							name={"select-rating-" + item.id}
+							name={`select-rating-${item.id}`}
 							value={this.getRating(item)}
 							options={ratingOptions}
-							onChange={(e) => {
-								this.handleRatingChange(item, e === null ? null : e.value);
-							}}
+							onChange={(e) => this.handleRatingChange(item, e === null ? null : e.value)}
 						/>
 					</div>
 				</li>

@@ -1,6 +1,9 @@
 export const API_URL = "https://api.chucknorris.io/jokes";
 export const JOKE_PEREX_LEN = 25;
 
+export const INPUT_NUMBER_MIN = 1;
+export const INPUT_NUMBER_MAX = 25;
+
 export const CATEGORIES_ICONS = {
     explicit: "pe-7s-star",
     dev: "pe-7s-server",

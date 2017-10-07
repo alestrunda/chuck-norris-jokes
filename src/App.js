@@ -8,11 +8,12 @@ import InputNumber from './components/InputNumber';
 import Note from './components/Note';
 import Search from './components/Search';
 
-import { API_URL, JOKE_PEREX_LEN } from './settings.js';
+import { API_URL, JOKE_PEREX_LEN, INPUT_NUMBER_MIN, INPUT_NUMBER_MAX } from './settings.js';
 import { sampleJokesRating, sampleJokesFavourite } from './data/sampleData.js';
 
 import './App.css';
 import 'react-select/dist/react-select.css';
+
 
 const getTextPerex = (text, length = JOKE_PEREX_LEN) => {
 	return text.length > length ? text.substring(0, length) + "..." : text;
@@ -88,7 +89,7 @@ class App extends React.Component {
 			.then((response) => {
 				if(!this.isNewJoke(response.data, this.state.jokes)) {
 					this.setState({
-						currentInfo: "Skipped - joke '" + getTextPerex(response.data.value) + "' already loaded",
+						currentInfo: `Skipped - joke '${getTextPerex(response.data.value)}' already loaded`,
 					});
 					return;
 				}
@@ -130,7 +131,7 @@ class App extends React.Component {
 		}
 		this.setState({
 			jokesFavourite: jokes,
-			currentInfo: "Joke '" + getTextPerex(item.value) + "' " + actionStr + ".",
+			currentInfo: `Joke '${getTextPerex(item.value)}' ${actionStr}.`,
 		});
 	}
 
@@ -147,7 +148,7 @@ class App extends React.Component {
 		}
 		this.setState({
 			jokesRatings: jokes,
-			currentInfo: "Joke '" + getTextPerex(item.value) + "' rating set to " + value + ".",
+			currentInfo: `Joke '${getTextPerex(item.value)}' rating set to ${value}.`,
 		});
 	}
 
@@ -237,18 +238,31 @@ class App extends React.Component {
 						</div>
 						<div className="sidebar__section">
 							<h3 className="sidebar__heading">Search</h3>
-							<Search placeholder="word" onChange={this.handleSearchChange} onSearchTrigger={this.handleSearchTrigger}></Search>
+							<Search
+								placeholder="Search for... word"
+								onChange={this.handleSearchChange}
+								onSearchTrigger={this.handleSearchTrigger}>
+							</Search>
 						</div>
 						<div className="sidebar__section">
 							<h3 className="sidebar__heading">Results per load</h3>
-							<InputNumber value={this.state.itemsPerLoad} handleChange={this.handleItemsPerLoadChange} min={1} max={25}></InputNumber>
+							<InputNumber
+								value={this.state.itemsPerLoad}
+								handleChange={this.handleItemsPerLoadChange}
+								min={INPUT_NUMBER_MIN}
+								max={INPUT_NUMBER_MAX}>
+							</InputNumber>
 						</div>
 					</div>
 					<div className="sidebar__section">
 						<div className="container">
 							<h3 className="sidebar__heading">Categories</h3>
 						</div>
-						<ListCategories items={this.state.categories} activeCategory={this.state.activeCategory} onCategoryClick={this.handleCategoryClick}></ListCategories>
+						<ListCategories
+							items={this.state.categories}
+							activeCategory={this.state.activeCategory}
+							onCategoryClick={this.handleCategoryClick}>
+						</ListCategories>
 					</div>
 				</div>
 				<div className="main__content">
@@ -263,7 +277,13 @@ class App extends React.Component {
 										<span className="opening-icon circle-number circle-number--purple">{this.state.jokes.length}</span>
 										Random jokes
 									</h2>
-									<ListJokes items={this.state.jokes} favourites={this.state.jokesFavourite} ratings={this.state.jokesRatings} onFavouriteClick={this.handleFavouriteClick} onRatingClick={this.handleRatingChange}></ListJokes>
+									<ListJokes
+										items={this.state.jokes}
+										favourites={this.state.jokesFavourite}
+										ratings={this.state.jokesRatings}
+										onFavouriteClick={this.handleFavouriteClick}
+										onRatingClick={this.handleRatingChange}>
+									</ListJokes>
 									<Button cssClass="button" onClick={this.handleLoadNewJokesClick} text="Load more jokes"></Button>
 								</div>
 							)} />
@@ -273,7 +293,13 @@ class App extends React.Component {
 										<span className="opening-icon circle-number circle-number--purple">{this.state.jokesFavourite.length}</span>
 										My favourite jokes
 									</h2>
-									<ListJokes items={this.state.jokesFavourite} favourites={this.state.jokesFavourite} ratings={this.state.jokesRatings} onFavouriteClick={this.handleFavouriteClick} onRatingClick={this.handleRatingChange}></ListJokes>
+									<ListJokes
+										items={this.state.jokesFavourite}
+										favourites={this.state.jokesFavourite}
+										ratings={this.state.jokesRatings}
+										onFavouriteClick={this.handleFavouriteClick}
+										onRatingClick={this.handleRatingChange}>
+									</ListJokes>
 								</div>
 							)} />
 							<Route path='/ratings' render={() => (
@@ -282,7 +308,13 @@ class App extends React.Component {
 										<span className="opening-icon circle-number circle-number--purple">{this.state.jokesRatings.length}</span>
 										My ratings
 									</h2>
-									<ListJokes items={this.state.jokesRatings} favourites={this.state.jokesFavourite} ratings={this.state.jokesRatings} onFavouriteClick={this.handleFavouriteClick} onRatingClick={this.handleRatingChange}></ListJokes>
+									<ListJokes
+										items={this.state.jokesRatings}
+										favourites={this.state.jokesFavourite}
+										ratings={this.state.jokesRatings}
+										onFavouriteClick={this.handleFavouriteClick}
+										onRatingClick={this.handleRatingChange}>
+									</ListJokes>
 								</div>
 							)} />
 						</Switch>

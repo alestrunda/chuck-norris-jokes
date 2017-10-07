@@ -48,7 +48,7 @@ class ListCategories extends React.Component {
 			return (
 				<li className={classNames("list-categories__item", this.props.activeCategory === item ? "active" : "")} onClick={this.handleItemClick} key={index}>
 					<Link className="list-categories__link" to={'/'}>
-						<i className={"list-categories__icon " + getCategoryIcon(item)}></i>
+						<i className={classNames('list-categories__icon', getCategoryIcon(item))}></i>
 						{item}
 					</Link>
 				</li>

@@ -41,7 +41,15 @@ class InputNumber extends React.Component {
 
 	render() {
 		return (
-			<input className="input-text input-text--tiny" onChange={this.handleChange} type="number" value={this.state.val} step="1" min={this.props.min} max={this.props.max} />
+			<input
+				className="input-text input-text--tiny"
+				onChange={this.handleChange}
+				type="number"
+				value={this.state.val}
+				step="1"
+				min={this.props.min}
+				max={this.props.max}
+			/>
 		)
 	}
 };
