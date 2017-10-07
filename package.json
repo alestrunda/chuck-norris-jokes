@@ -5,8 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
-    "enzyme": "^3.0.0",
-    "enzyme-adapter-react-16": "^1.0.0",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
     "font-awesome": "^4.7.0",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.1",
