@@ -9,5 +9,5 @@ it("renders note's text", () => {
         text: "lorem ipsum"
     };
     const button = mount(<Note {...props} />);
-    expect(button.html()).toBe("<p>" + props.text + "</p>");
+    expect(button.html()).toBe('<p class="note-app">' + props.text + '</p>');
 });
