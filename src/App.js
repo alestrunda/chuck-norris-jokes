@@ -317,6 +317,11 @@ class App extends React.Component {
 									</ListJokes>
 								</div>
 							)} />
+							<Route render={() => (
+								<div className="container">
+									<h2>Page not found</h2>
+								</div>
+							)} />
 						</Switch>
 						<div className="container">
 							<Note text={this.state.currentInfo}></Note>
