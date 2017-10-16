@@ -30,7 +30,7 @@ class InputNumber extends React.Component {
 			this.setState({val: this.props.min});
 	}
 
-	handleChange = (e) => {
+	handleChange = e => {
 		const val = parseInt(e.target.value, 10);
 		if(!this.isValidVal(val))
 			return;

@@ -69,13 +69,13 @@ class App extends React.Component {
 
 	loadCategories() {
 		axios.get(API_URL + "/categories")
-		.then((response) => {
+		.then(response => {
 			this.setState({
 				categories: response.data,
 				currentInfo: response.data.length + " categories loaded"
 			});
 		})
-		.catch((error) => {
+		.catch(error => {
 			this.setState({
 				currentInfo: "Cannot load category",
 			});
@@ -86,19 +86,20 @@ class App extends React.Component {
 		let url = API_URL + "/random" + (category ? "?category=" + category : "");
 		
 		axios.get(url)
-			.then((response) => {
-				if(!this.isNewJoke(response.data, this.state.jokes)) {
+			.then(response => response.data)
+			.then(joke => {
+				if(!this.isNewJoke(joke, this.state.jokes)) {
 					this.setState({
-						currentInfo: `Skipped - joke '${getTextPerex(response.data.value)}' already loaded`,
+						currentInfo: `Skipped - joke '${getTextPerex(joke.value)}' already loaded`,
 					});
 					return;
 				}
-				const jokes = [...this.state.jokes, response.data];
+				const jokes = [...this.state.jokes, joke];
 				this.setState({
 					jokes: jokes
 				});
 			})
-			.catch((error) => {
+			.catch(error => {
 				this.setState({
 					currentInfo: "Cannot load new joke",
 				});
@@ -118,7 +119,7 @@ class App extends React.Component {
 		}
 	}
 
-	handleFavouriteClick = (item) => {
+	handleFavouriteClick = item => {
 		let actionStr = "";
 		let jokes = [...this.state.jokesFavourite];
 		const jokeIndex = findItemIndexById(jokes, item.id);
@@ -156,33 +157,34 @@ class App extends React.Component {
 		if(!this.state.searchQuery)
 			return;
 		axios.get(API_URL + "/search?query=" + encodeURIComponent(this.state.searchQuery))
-			.then((response) => {
-				if(response.data.result === "null") {
+			.then(response => response.data.result)
+			.then(result => {
+				if(result === "null") {
 					this.setState({
 						currentInfo: "No jokes found matching this query",
 					});
 					return;
 				}
 				this.setState({
-					jokes: response.data.result,
+					jokes: result,
 					currentInfo: "Jokes loaded",
 					activeCategory: "",
 				});
 			})
-			.catch((error) => {
+			.catch(error => {
 				this.setState({
 					currentInfo: "Cannot load new joke",
 				});
 			});
 	}
 
-	handleSearchChange = (text) => {
+	handleSearchChange = text => {
 		this.setState({
 			searchQuery: text
 		});
 	}
 
-	handleItemsPerLoadChange = (number) => {
+	handleItemsPerLoadChange = number => {
 		this.setState({
 			itemsPerLoad: number
 		});
@@ -195,7 +197,7 @@ class App extends React.Component {
 		this.loadNewJokes();
 	}
 
-	handleCategoryClick = (category) => {
+	handleCategoryClick = category => {
 		this.setState({
 			jokes: [],
 			activeCategory: category

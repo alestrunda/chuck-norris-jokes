@@ -19,13 +19,13 @@ class Search extends React.Component {
 		};
 	}
 
-	handleChange = (e) => {
+	handleChange = e => {
 		this.setState({val: e.target.value});
 		if(this.props.onChange)
 			this.props.onChange(e.target.value);
 	}
 
-	handleSubmit = (e) => {
+	handleSubmit = e => {
 		e.preventDefault();
 		this.props.onSearchTrigger(this.state.val);
 	}

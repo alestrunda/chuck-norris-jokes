@@ -21,7 +21,7 @@ class ListJokes extends React.Component {
 		ratings: PropTypes.array.isRequired,
 	}
 
-	handleFavouriteClick = (item) => {
+	handleFavouriteClick = item => {
 		this.props.onFavouriteClick(item);
 	}
 
@@ -60,7 +60,7 @@ class ListJokes extends React.Component {
 							name={`select-rating-${item.id}`}
 							value={this.getRating(item)}
 							options={ratingOptions}
-							onChange={(e) => this.handleRatingChange(item, e === null ? null : e.value)}
+							onChange={e => this.handleRatingChange(item, e === null ? null : e.value)}
 						/>
 					</div>
 				</li>

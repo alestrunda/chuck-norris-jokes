@@ -32,7 +32,7 @@ class ListCategories extends React.Component {
 		});
 	}
 
-	handleItemClick = (e) => {
+	handleItemClick = e => {
 		const category = this.state.selected === e.target.textContent ? "" : e.target.textContent;
 		this.setState({
 			selected: category
