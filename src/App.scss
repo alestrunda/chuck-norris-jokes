@@ -72,6 +72,11 @@ ul {
     font-weight: 500;
     cursor: pointer;
 
+    &:focus {
+        outline: none;
+    }
+
+    &:focus,
     &:hover {
         box-shadow: 0 2px 1px rgba(0, 0, 0, 0.35), 0 0 1px rgba(0, 0, 0, 0.1) inset;
         border-color: 1px solid #666;
@@ -149,12 +154,18 @@ ul {
 .input-text {
     display: block;
     width: 100%;
-    padding: 10px 17px;
+    padding: 8px 15px;
     font-size: 13px;
     background-color: #fff;
-    border: 0;
+    border: 2px solid transparent;
     font-family: 'Montserrat', sans-serif;
     border-radius: 18px;
+    transition: all 0.3s ease-out;
+
+    &:focus {
+        outline: none;
+        border-color: #eaa001;
+    }
 }
 
 .input-text--right-big {
@@ -231,6 +242,11 @@ ul {
     color: #eaa001;
     transform: translateX(-50%);
     padding: 5px;
+    transition: transform 0.3s ease-out;
+
+    &:hover {
+        transform: translateX(-50%) scale(1.3);
+    }
 }
 
 .list-jokes__icon--active {
@@ -251,11 +267,11 @@ ul {
     transition: background-color 0.3s ease-out, color 0.2s ease-out;
 
     &:hover {
-        background-color: #a9e08b;
+        background-color: #64ad3c;
         color: #fff;
 
         &:nth-child(2n) {
-            background-color: #a9e08b;
+            background-color: #64ad3c;
         }
     }
 
@@ -273,6 +289,7 @@ ul {
     width: 140px;
     font-size: 14px;
     text-align: left;
+    color: #272733;
 
     .Select-clear,
     .Select-control,
