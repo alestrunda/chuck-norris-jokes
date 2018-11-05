@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import ListCategories from "./components/ListCategories";
 import ListJokes from "./components/ListJokes";
@@ -161,6 +161,7 @@ class App extends React.Component {
 
   handleSearchTrigger = () => {
     if (!this.state.searchQuery) return;
+    this.props.history.push('/');
     axios
       .get(
         API_URL + "/search?query=" + encodeURIComponent(this.state.searchQuery)
@@ -374,4 +375,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
