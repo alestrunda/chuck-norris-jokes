@@ -16,6 +16,8 @@ import {
 } from "./settings.js";
 import { sampleJokesRating, sampleJokesFavourite } from "./data/sampleData.js";
 
+import "font-awesome/css/font-awesome.min.css";
+import "pixeden-stroke-7-icon/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css";
 import "./App.scss";
 
 const getTextPerex = (text, length = JOKE_PEREX_LEN) => {
