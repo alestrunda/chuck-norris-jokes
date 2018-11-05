@@ -12,7 +12,6 @@ import { API_URL, JOKE_PEREX_LEN, INPUT_NUMBER_MIN, INPUT_NUMBER_MAX } from './s
 import { sampleJokesRating, sampleJokesFavourite } from './data/sampleData.js';
 
 import './App.css';
-import 'react-select/dist/react-select.css';
 
 
 const getTextPerex = (text, length = JOKE_PEREX_LEN) => {
