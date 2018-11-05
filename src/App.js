@@ -16,7 +16,7 @@ import {
 } from "./settings.js";
 import { sampleJokesRating, sampleJokesFavourite } from "./data/sampleData.js";
 
-import "./App.css";
+import "./App.scss";
 
 const getTextPerex = (text, length = JOKE_PEREX_LEN) => {
   return text.length > length ? text.substring(0, length) + "..." : text;
