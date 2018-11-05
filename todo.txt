@@ -1,1 +1,1 @@
-- App test is failing (some problem with axios)
+- react-select not showing selected value, looks like the problem is in the package
