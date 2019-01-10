@@ -35,10 +35,11 @@ class ListJokes extends React.Component {
 
   getRating(item) {
     const itemRating = this.props.ratings.find(el => el.id === item.id);
-    return itemRating ? itemRating.rating : null;
+    return itemRating ? ratingOptions.find(option => option.value === itemRating.rating) : null;
   }
 
   render() {
+    console.log('render');
     if (!this.props.items) return;
     const items = this.props.items.map((item, index) => {
       return (
