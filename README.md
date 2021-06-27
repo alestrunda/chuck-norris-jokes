@@ -1,5 +1,5 @@
-# chuck-norris-jokes
-Simple SPA listing Chuck Norris jokes
+# Chuck Norris Jokes
 
-Using react, no flux architecture, all logic in App.js.
-No storage, user data are static.
+Simple SPA listing Chuck Norris jokes from public API.
+
+My first react.js experience. For the sake of simplicity I put all the logic in App.js, no storage, user data are static.
